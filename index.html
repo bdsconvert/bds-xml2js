@@ -39,6 +39,7 @@
         for (let key in obj) {
           if (Array.isArray(obj[key]) === false){
             obj[key] = "[" + obj[key] + "]";
+            console.log(obj[key]);
           }   
         }
       }
