@@ -5,6 +5,9 @@
   <body>
     <h4>BDS-XML2JS</h4>
     
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fast-xml-parser/3.21.1/parser.js"></script>
+    
     <script>
       const xml = `
         <Product xmlns="http://ns.editeur.org/onix/3.0/reference">
@@ -35,7 +38,6 @@
       if(result !== true) cnosole.log(result.err);
       console.log(parser.parse(xml));
     </script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fast-xml-parser/3.21.1/parser.js"></script>
+
   </body>
 </html>
