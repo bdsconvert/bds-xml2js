@@ -31,6 +31,11 @@
                   <ContributorRole>A01</ContributorRole>
                   <PersonName>J. K. Rowling</PersonName>
                 </Contributor>
+                <Contributor>
+                  <SequenceNumber>2</SequenceNumber>
+                  <ContributorRole>A12</ContributorRole>
+                  <PersonName>Kazu Kibuishi </PersonName>
+                </Contributor>
           </DescriptiveDetail>
         </Product>
       `;
@@ -64,7 +69,7 @@
       }
       const result = parser.validate(xml);
       if(result !== true) cnosole.log(result.err);
-      const js = forcearray(parser.parse(xml));
+      const js = parser.parse(xml);
       console.log(flatten(js, "Product"));
     </script>
 
