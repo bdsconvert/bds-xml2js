@@ -113,7 +113,7 @@
             else if (typeof o === "object") {
               let arr = [];
               for (let m in o) arr[arr.length] = X.toJson(o[m], m, ind + "\t");
-              json += (name ? ":[{" : "[{") + (arr.length > 1 ? "\n" + ind + "\t" + arr.join(",\n" + ind + "\t") + "\n" + ind : arr.join("")) + "}]";
+              json += (name ? ":{" : "{") + (arr.length > 1 ? "\n" + ind + "\t" + arr.join(",\n" + ind + "\t") + "\n" + ind : arr.join("")) + "}";
             } else if (typeof o === "string") json += (name && ":") + '"' + o.toString() + '"';
             else json += (name && ":") + o.toString();
             return json;
@@ -196,8 +196,14 @@
       const node = dom.querySelector("Product");
       const Product = xml2json(node, "\t");
       console.log(Product);
-      const ProductFlat = flatten(Product, "Product");
-      console.log(ProductFlat);
+      for (let key in Product) {
+         if (typeof Product[key] === "object" && Product[key] !== null && Array.isArray(Product[key]) === false) {
+           Product[key] = "[" + Product[key] + "]";
+         }
+      }
+      console.log(Product);
+      //const ProductFlat = flatten(Product, "Product");
+      //console.log(ProductFlat);
       
       
       //const result = parser.validate(xml);
