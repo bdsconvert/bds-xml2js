@@ -35,6 +35,14 @@
         </Product>
       `;
       
+      function forcearray (obj) {
+        for (let key in obj) {
+          if (Array.isArray(obj[key]) === false){
+            obj[key] = [...obj[key];
+          }   
+        }
+      }
+      
       function flatten(obj, parent) {
         let objflat = {};
         let flat = function (obj, parent) {
@@ -53,8 +61,8 @@
       }
       const result = parser.validate(xml);
       if(result !== true) cnosole.log(result.err);
-      const js = parser.parse(xml);
-      console.log(flatten(js, "Product"));
+      const js = forcearray(parser.parse(xml));
+      //console.log(flatten(js, "Product"));
     </script>
 
   </body>
