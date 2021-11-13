@@ -70,7 +70,7 @@
       const result = parser.validate(xml);
       if(result !== true) cnosole.log(result.err);
       const js = parser.parse(xml);
-      console.log(js);
+      console.log(JSON.stringify(js));
       console.log(flatten(js, "Product"));
     </script>
 
