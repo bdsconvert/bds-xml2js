@@ -33,10 +33,28 @@
                 </Contributor>
           </DescriptiveDetail>
         </Product>
-      `
+      `;
+      
+      function flatten(obj, parent) {
+        let objflat = {};
+        let flat = function (obj, parent) {
+          for (let key in obj) {
+            if (typeof obj[key] === "object" && obj[key] !== null && Array.isArray(obj[key]) === false) {
+              flat(obj[key], parent + "_" + key);
+            } else if (Array.isArray(obj[key]) === true) {
+              flat({ ...obj[key] }, parent + "_" + key);
+            } else {
+              objflat[parent + "_" + key] = obj[key];
+            }
+          }
+        };
+        flat(obj, parent);
+        return objflat;
+      }
       const result = parser.validate(xml);
       if(result !== true) cnosole.log(result.err);
-      console.log(parser.parse(xml));
+      const js = parser.parse(xml);
+      console.log(flatten(js, "Product"));
     </script>
 
   </body>
