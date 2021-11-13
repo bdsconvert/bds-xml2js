@@ -6,7 +6,7 @@
     <h4>BDS-XML2JS</h4>
     
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fast-xml-parser/3.21.1/parser.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/fast-xml-parser/3.21.1/parser.js"></script>-->
     
     <script>
       const xml = `
@@ -191,7 +191,7 @@
         return objflat;
       }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-      
+      const parser = new DOMParser();
       const dom = parser.parseFromString(xml, "application/xml");
       const node = dom.querySelector("Product");
       const Product = xml2json(child, "\t");
