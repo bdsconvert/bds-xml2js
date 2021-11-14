@@ -179,7 +179,7 @@
         let flat = function (obj, parent) {
           for (let key in obj) {
             if (typeof obj[key] === "object" && obj[key] !== null && Array.isArray(obj[key]) === false) {
-              flat({ ...obj[key] }, parent + "_" + key);
+              flat(obj[key], parent + "_" + key);
             } else if (Array.isArray(obj[key]) === true) {
               flat({ ...obj[key] }, parent + "_" + key);
             } else {
@@ -196,14 +196,12 @@
       const node = dom.querySelector("Product");
       const Product = xml2json(node, "\t");
       console.log(Product);
-      //for (let key in Product) {
-      //   if (typeof Product[key] === "object" && Product[key] !== null && Array.isArray(Product[key]) === false) {
-      //     //Product[key] = "[" + Product[key] + "]";
-      //     console.log([Product[key]]);
-      //   }
-      //}
+      
       const ProductFlat = flatten(Product, "Product");
       console.log(ProductFlat);
+      
+      const alwaysarray = JSON.stringify(ProductFlat).replace(/_/g, "_0_");
+      console.log(alwaysarray);
       
       
       //const result = parser.validate(xml);
