@@ -10,7 +10,7 @@
     
     <script>
       const xml = `
-        <Product xmlns="http://ns.editeur.org/onix/3.0/reference">
+        <Product>
           <RecordReference>9780545582957</RecordReference>
           <ProductIdentifier>
                 <ProductIDType>03</ProductIDType>
@@ -253,7 +253,7 @@
       const ProductUnFlat = unflatten(ProductFlat);
       console.log(ProductUnFlat);
       
-      console.log(json2xml(ProductUnFlat, '\t'));
+      console.log(json2xml(ProductUnFlat, ""));
       
       //const result = parser.validate(xml);
       //if(result !== true) cnosole.log(result.err);
