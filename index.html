@@ -42,7 +42,7 @@
       
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-      function json2xml(o, root, tab) {
+      function json2xml(o, tab) {
         var toXml = function (v, name, ind) {
             var xml = "";
             if (v instanceof Array) {
@@ -66,7 +66,7 @@
             } else {
               xml += ind + "<" + name + ">" + v.toString() + "</" + name + ">";
             }
-            return root === "" ? xml : `<${root}>xml</${root}>`;
+            return xml;
           },
           xml = "";
         for (var m in o) xml += toXml(o[m], m, "");
@@ -253,7 +253,7 @@
       const ProductUnFlat = unflatten(ProductFlat);
       console.log(ProductUnFlat);
       
-      console.log(json2xml(ProductUnFlat, "Product", ""));
+      console.log(json2xml(ProductUnFlat, ""));
       
       //const result = parser.validate(xml);
       //if(result !== true) cnosole.log(result.err);
