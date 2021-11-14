@@ -200,7 +200,7 @@
       const ProductFlat = flatten(Product, "Product");
       console.log(ProductFlat);
       
-      const alwaysarray = JSON.stringify(ProductFlat).replace(/_[^_0-9_]/g, "_0_");
+      const alwaysarray = JSON.stringify(ProductFlat).replace(/[a-z]_[a-z]/g, "_0_");
       console.log(alwaysarray);
       
       
