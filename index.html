@@ -201,7 +201,7 @@
       console.log(ProductFlat);
       
       const alwaysarray = JSON.stringify(ProductFlat).replace(/([a-zA-Z])_([a-zA-Z])/g, "$1_0_$2").replace(/\":/g, "_0\":");
-      console.log(alwaysarray);
+      console.log(JSON.parse(alwaysarray));
       
       
       //const result = parser.validate(xml);
