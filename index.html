@@ -198,10 +198,11 @@
       console.log(Product);
       for (let key in Product) {
          if (typeof Product[key] === "object" && Product[key] !== null && Array.isArray(Product[key]) === false) {
-           Product[key] = "[" + Product[key] + "]";
+           //Product[key] = "[" + Product[key] + "]";
+           console.log(Product[key]);
          }
       }
-      console.log(Product);
+      //console.log(Product);
       //const ProductFlat = flatten(Product, "Product");
       //console.log(ProductFlat);
       
