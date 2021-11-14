@@ -242,7 +242,7 @@
       const Product = xml2json(node, "\t");
       console.log(Product);
       
-      let ProductFlat = flatten(Product, "");
+      let ProductFlat = flatten(Product, "Product");
       //console.log(ProductFlat);
       
       const alwaysarray = JSON.stringify(ProductFlat).replace(/([a-zA-Z])_([a-zA-Z])/g, "$1_0_$2").replace(/\":/g, "_0\":");
