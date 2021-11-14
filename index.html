@@ -191,6 +191,19 @@
         return objflat;
       }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
+      
+      function unflatten(data) {
+        var objunflat = {};
+        for (var i in data) {
+          var keys = i.split("_");
+          keys.reduce(function (r, e, j) {
+            return r[e] || (r[e] = isNaN(Number(keys[j + 1])) ? (keys.length - 1 === j ? data[i] : {}) : []);
+          }, objunflat);
+        }
+        return objunflat;
+      }
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+      
       const parser = new DOMParser();
       const dom = parser.parseFromString(xml, "application/xml");
       const node = dom.querySelector("Product");
@@ -198,11 +211,15 @@
       console.log(Product);
       
       const ProductFlat = flatten(Product, "Product");
-      console.log(ProductFlat);
+      //console.log(ProductFlat);
       
       const alwaysarray = JSON.stringify(ProductFlat).replace(/([a-zA-Z])_([a-zA-Z])/g, "$1_0_$2").replace(/\":/g, "_0\":");
-      console.log(alwaysarray);
-      console.log(JSON.parse(alwaysarray));
+      //console.log(alwaysarray);
+      ProductFlat = JSON.parse(alwaysarray);
+      console.log(ProductFlat);
+      
+      const ProductUnFlat = unflatten(ProductFlat);
+      console.log(ProductUnFlat);
       
       
       //const result = parser.validate(xml);
