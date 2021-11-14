@@ -179,7 +179,7 @@
         let flat = function (obj, parent) {
           for (let key in obj) {
             if (typeof obj[key] === "object" && obj[key] !== null && Array.isArray(obj[key]) === false) {
-              flat({ [...obj[key]] }, parent + "_" + key);
+              flat({ ...[obj[key]] }, parent + "_" + key);
             } else if (Array.isArray(obj[key]) === true) {
               flat({ ...obj[key] }, parent + "_" + key);
             } else {
